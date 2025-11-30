@@ -1,6 +1,7 @@
 
 const db = require('../utils/db-connection')
 const Student = require('../models/students')
+const IdentityCard = require('../models/identitycard')
 
 const addEntries =async (req,res)=>{
     try{
@@ -13,7 +14,18 @@ const addEntries =async (req,res)=>{
         res.status(500).send("Failed to create user");
     }
 }
-
+const addingValusesToStudentAndTdentities = async(req,res)=>{
+    try{
+        const student =await Student.create(req.body.student)
+        const idCard= await IdentityCard.create({
+            ...req.body.IdentityCard,
+            studentId:student.id
+        })
+        res.status(201).json({student,idCard})
+    }catch(err){
+        res.status(500).json({err:err.message})
+    }
+}
 const updateEntries = async(req,res)=>{
     try{
     const {id} = req.params;
@@ -49,5 +61,6 @@ const deleteEntries =async (req,res)=>{
 module.exports ={
     addEntries,
     updateEntries,
-    deleteEntries
+    deleteEntries,
+    addingValusesToStudentAndTdentities
 }

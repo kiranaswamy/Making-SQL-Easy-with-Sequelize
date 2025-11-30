@@ -2,7 +2,9 @@ const express = require('express')
 const app = express();
 const studentRoutes = require('./routes/studentRoutes')
 
-const studentModel = require('./models/students')
+
+require('./models');
+
 
 const db = require('./utils/db-connection')
 app.use(express.json());
