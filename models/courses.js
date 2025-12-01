@@ -2,12 +2,12 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../utils/db-connection');
 
-const Department = sequelize.define(
-  'department',            
+const Course = sequelize.define(
+  'course',            
   {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    name: { type: DataTypes.STRING },
+    name: { type: DataTypes.STRING,allowNull:false },
   }
 );
 
-module.exports = Department;
+module.exports = Course;

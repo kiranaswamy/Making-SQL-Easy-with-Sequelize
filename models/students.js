@@ -1,4 +1,4 @@
-// models/students.js
+
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../utils/db-connection');
 
